@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Lexend';
+    src: url(../fonts/Lexend.ttf);
+}
+
+body{
+    font-family: Lexend, sans-serif;
+
+    background: linear-gradient(rgb(14 14 16), #181a1c);
+
+    color:white;
+
+    margin: 0;
+}
+header{
+    height: 200px;
+    text-align: center;
+    color:white;
+}
+header #otz{
+    color:rgb(209, 43, 78);
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+}
+nav img{
+    height: 75%;
+}
+nav #selectKiller, #selectSurvivor{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    gap: 10px;
+    color:white;
+}
+main{
+    display: flex;
+    flex-direction: row;
+}
+main #sectionKiller #boxKiller {
+    width: 50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid white;
+    border-radius: 5%;
+    padding: 10px;
+}
+
+
+main #sectionKiller #boxKiller #imageKiller img {
+    width: 400px;
+    height: auto;
+}
+
+main #sectionKiller #boxKiller #perksKiller {
+    flex-grow: 1;
+    text-align: center;
+}
+
+
+main #sectionKiller #boxKiller #perksKiller .perksList {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+main #sectionKiller #boxKiller #perksKiller .perksList img {
+    width: 5rem;
+    height: 5rem;
+}
+main #sectionSurvivor{
+    display: none;
+}
+#perksKiller .build {
+    margin-bottom: 20px;
+}

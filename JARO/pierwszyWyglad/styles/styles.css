@@ -1,43 +1,159 @@
+/* Zmienne */
+:root {
+
+}
+
+/* Czcionki */
 @font-face {
     font-family: 'Lexend';
     src: url(../fonts/Lexend.ttf);
 }
 
-body{
-    font-family: Lexend, sans-serif;
-
-    background: linear-gradient(rgb(14 14 16), #181a1c);
-
-    color:white;
-
+/* Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-header{
-    height: 200px;
+img {
+    max-width: 100%;
+    display: block;
+}
+ul {
+    list-style: none;
+}
+
+#otz {
+    color:rgb(209, 43, 78);
+    position: relative;
+}
+#otz::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url(../content/favicon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    translate: 0 -50%;
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+    /* background: linear-gradient(rgb(14 14 16), #181a1c); */
+    height: 100dvh;
+}
+
+
+#hdr {
+    position: fixed;
+    height: 100dvh;
+    width: 100%;
+    align-content: center;
+    background-color: #161719;
+    z-index: 10000;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* DO ANIMACJI */
+}
+#heading-section {
     text-align: center;
     color:white;
+    padding-block: 64px;
 }
-header #otz{
-    color:rgb(209, 43, 78);
+#logo img {
+    display: inline-block;
 }
-nav{
-    display: flex;
-    flex-direction: row;
-    height: 100px;
-    width: 100%;
-}
-nav img{
-    height: 75%;
-}
-nav #selectKiller, #selectSurvivor{
-    width:50%;
+
+#nav-bar {
     display: flex;
     justify-content: center;
-    cursor: pointer;
-    gap: 10px;
-    color:white;
 }
-main{
+#nav-bar #categories-list {
+    display: flex;
+    gap: 32px;
+}
+#nav-bar .category-select {
+    text-align: center;
+    color: white;
+    padding: 32px;
+    border: 1px solid white;
+    border-radius: 32px;
+    cursor: pointer;
+}
+#nav-bar .category-select img {
+    height: 150px;
+    margin-bottom: 8px;
+}
+.category-section {
+    background-color: #161719;
+    color: white;
+    /* min-height: 100%; */
+
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-content: start;
+}
+
+.perks-profile {
+    width: 400px;
+    background-color: rgb(30, 30, 30);
+    padding: 16px;
+    position: relative;
+}
+.perks-profile .profile-image {
+    /* background-color: red; */
+}
+.perks-profile .profile-content {
+    /* background-color: red; */
+}
+.perks-profile .profile-name {
+    font-size: 2rem;
+}
+.perks-profile .build-information {
+    /* background-color: red; */
+}
+.perks-profile .build-information .build-name {
+    /* background-color: red; */
+}
+.perks-profile .build-information .perks-list {
+    display: flex;
+}
+.perks-profile .build-information .perks-list li {
+    background-image: url(../content/perk-background-dark.png);
+    background-size: contain;
+    padding: 4px;
+}
+.alt-builds {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+    padding: 16px;
+    transition: .2s;
+    display: none;
+}
+.perks-profile .alt-builds button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background-color: maroon;
+    border: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    color: white;
+    padding: 4px;
+    cursor: pointer;
+    /* left: 100%; */
+}
+
+.shown {
+    display: block;
+}
+/* main{
     display: flex;
     flex-direction: row;
 }
@@ -49,10 +165,10 @@ main #sectionKiller #boxKiller {
     border: 2px solid white;
     border-radius: 5%;
     padding: 10px;
-}
+} */
 
 
-main #sectionKiller #boxKiller #imageKiller img {
+/* main #sectionKiller #boxKiller #imageKiller img {
     width: 400px;
     height: auto;
 }
@@ -78,4 +194,4 @@ main #sectionSurvivor{
 }
 #perksKiller .build {
     margin-bottom: 20px;
-}
+} */

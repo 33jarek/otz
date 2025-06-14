@@ -1,9 +1,9 @@
-/* Zmienne */
+/* Variables */
 :root {
-
+    --clr-otz: hsl(347, 66%, 49%);
 }
 
-/* Czcionki */
+/* Fonts */
 @font-face {
     font-family: 'Lexend';
     src: url(../fonts/Lexend.ttf);
@@ -22,9 +22,26 @@ img {
 ul {
     list-style: none;
 }
+button, input {
+    font-family: inherit;
+}
+
+/* Utility */
+.t1 {
+    color: #199b1e;
+}
+.t2 {
+    color: #2f9cd6;
+}
+.t3 {
+    color: #ac3ee3;
+}
+.link {
+    color: var(--clr-otz);
+}
 
 #otz {
-    color:rgb(209, 43, 78);
+    color:var(--clr-otz);
     position: relative;
 }
 #otz::before {
@@ -42,10 +59,8 @@ ul {
 
 body {
     font-family: 'Lexend', sans-serif;
-    /* background: linear-gradient(rgb(14 14 16), #181a1c); */
     height: 100dvh;
 }
-
 
 #hdr {
     position: fixed;
@@ -56,6 +71,7 @@ body {
     z-index: 10000;
 
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* DO ANIMACJI */
+    color: white;
 }
 #heading-section {
     text-align: center;
@@ -86,47 +102,143 @@ body {
     height: 150px;
     margin-bottom: 8px;
 }
-.category-section {
-    background-color: #161719;
-    color: white;
-    /* min-height: 100%; */
 
-    display: flex;
+/* Main content for the site */
+#main-content {
+    background-color: #161719;
+}
+.category-section {
+    color: white;
+    padding: 64px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    flex-wrap: wrap;
-    align-content: start;
+}
+.category-select:hover.is-killer {
+    filter: sepia(1) saturate(30) hue-rotate(289.1deg) saturate(7) brightness(0.47);
+}
+.category-select:hover.is-survivor {
+    filter: sepia(1) saturate(30) hue-rotate(177.3deg) saturate(3.1) brightness(0.40);
 }
 
-.perks-profile {
-    width: 400px;
-    background-color: rgb(30, 30, 30);
+.character-profile {
     padding: 16px;
     position: relative;
-}
-.perks-profile .profile-image {
-    /* background-color: red; */
-}
-.perks-profile .profile-content {
-    /* background-color: red; */
-}
-.perks-profile .profile-name {
-    font-size: 2rem;
-}
-.perks-profile .build-information {
-    /* background-color: red; */
-}
-.perks-profile .build-information .build-name {
-    /* background-color: red; */
-}
-.perks-profile .build-information .perks-list {
     display: flex;
 }
-.perks-profile .build-information .perks-list li {
-    background-image: url(../content/perk-background-dark.png);
+
+.character-profile .character-image {
+    position: relative;
+    z-index: 1;
+}
+
+.character-profile .character-image .character-name {
+    font-size: 2rem;
+    text-align: center;
+    mask-image: url(../content/CharPortrait_roleBG.webp);
+    mask-size: 90%;
+    filter: drop-shadow(0 0 5px black);
+    mask-position: 30%;
+    margin-bottom: 8px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    translate: -50% 0;
+    width: 100%;
+}
+
+.character-profile .character-content {
+    position: relative;
+    align-content: center;
+    z-index: 0;
+}
+.character-profile .character-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    translate: 0 -50%;
+    width: 150%;
+    height: 80%;
+    background-color: hsl(240, 6%, 15%);
+    z-index: -1;
+    border-radius: 8px;
+}
+
+.character-profile .character-content .build.main-build {
+    position: relative;
+    z-index: 0;
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build.main-build .additional-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.character-profile .character-content .build.main-build .additional-info .about-build .main-build-info {
+    list-style: disc;
+    padding-left: 32px;
+    font-size: .8rem;
+    color: hsl(0, 0%, 80%);
+}
+
+.character-profile .character-content .build.main-build .additional-info .more-builds .btn-show-list {
+    background-color: var(--clr-otz);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.character-profile .character-content .build.main-build .additional-info .more-builds .builds-count {
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build .build-name {
+    /* background-color: red; */
+}
+
+.character-profile .character-content .build .perks-list {
+    position: relative;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build .perks-list li {
+    /* background-image: url(../content/perk-background-dark.png); */
+    background-repeat: no-repeat;
     background-size: contain;
     padding: 4px;
+    max-width: 150px;
+    position: relative;
 }
-.alt-builds {
+.character-profile .character-content .build .perks-list li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+    width: 1px;
+    height: 80%;
+    background-image: linear-gradient(to top, transparent, hsl(0, 0%, 50%), transparent);
+}
+.character-profile .character-content .build .perks-list li:last-child::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    translate: 0 -50%;
+    width: 1px;
+    height: 80%;
+    background-image: linear-gradient(to top, transparent, hsl(0, 0%, 50%), transparent);
+}
+
+.character-profile .character-content .builds-list {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -136,19 +248,36 @@ body {
     transition: .2s;
     display: none;
 }
-.perks-profile .alt-builds button {
+
+.character-profile .character-content .builds-list .btn-show-list {
     position: absolute;
     right: 16px;
     top: 16px;
-    background-color: maroon;
+    background-color: var(--clr-otz);
     border: 0;
     font-size: 1.2rem;
     border-radius: 50%;
     color: white;
     padding: 4px;
     cursor: pointer;
+    z-index: 10;
     /* left: 100%; */
 }
+
+/* 
+.character-profile .build .perks-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    translate: -50% -50%;
+    background-image: url(../content/CharPortrait_roleBG_horizontal.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+} */
 
 .shown {
     display: block;
@@ -160,46 +289,29 @@ body {
     top: 0;
     z-index: 100;
     padding: 8px;
-}
-/* main{
-    display: flex;
-    flex-direction: row;
-}
-main #sectionKiller #boxKiller {
-    width: 50%;
-    display: inline-flex;
-    align-items: center;
-    gap: 20px;
-    border: 2px solid white;
-    border-radius: 5%;
-    padding: 10px;
-} */
 
-
-/* main #sectionKiller #boxKiller #imageKiller img {
-    width: 400px;
-    height: auto;
 }
-
-main #sectionKiller #boxKiller #perksKiller {
-    flex-grow: 1;
-    text-align: center;
+.role-fog {
+    position: absolute;
+    background-image: url(../content/CharPortrait_roleBG.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
-
-
-main #sectionKiller #boxKiller #perksKiller .perksList {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
+.role-fog.is-killer {
+    filter: sepia(1) saturate(30) hue-rotate(289.1deg) saturate(7) brightness(0.47);
 }
-
-main #sectionKiller #boxKiller #perksKiller .perksList img {
-    width: 5rem;
-    height: 5rem;
+.role-fog.is-survivor {
+    filter: sepia(1) saturate(30) hue-rotate(177.3deg) saturate(3.1) brightness(0.40);
 }
-main #sectionSurvivor{
-    display: none;
+.character-background {
+    position: absolute;
+    background-image: url(../content/CharPortrait_bg.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
-#perksKiller .build {
-    margin-bottom: 20px;
-} */

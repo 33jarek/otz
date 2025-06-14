@@ -1,14 +1,14 @@
-CorruptIntervention
-PainResonance
-DeadMansSwitch
+Corrupt Intervention
+Pain Resonance
+Dead Mans Switch
 Agitation
-GrimEmbrace
+Grim Embrace
 Ruin
-WretchedFate
-ThrillOfTheHunt
+Wretched Fate
+Thrill Of The Hunt
 Deadlock
-CoupdeGrâce
-NoOneEscapesDeath
+Coupde Grâce
+No One Escapes Death
 SloppyButcher
 SpiesFromTheShadows
 PopGoesTheWeasel
@@ -83,3 +83,9 @@ UltimateWeapon
 LanguidTouch
 HumanGreed
 PhantomFear
+
+INSERT INTO perks(name, description)
+VALUES('Corrupt Intervention', 'Coś sobie robi 1'),
+('Pain Resonance', 'Ten też coś robi 2'),
+('Dead Mans Switch', 'Ale mocny perk 3'),
+('Agitation', 'Do nerfa 4');

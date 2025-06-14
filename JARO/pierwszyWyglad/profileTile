@@ -1,0 +1,106 @@
+<!-- <div class="perks-profile">
+    <div class="profile-image">
+        <div class="profile-background"></div>
+        <div class="role-fog is-killer"></div>
+        <img src="content/killers/K01_TheTrapper_Portrait.png" alt="The Animatronic image">
+    </div>
+    <div class="profile-content">
+        <h2 class="profile-name">The Trapper</h2>
+        <div class="build-information">
+            <h3 class="build-name">Generic Build</h3>
+            <ul class="perks-list">
+                <div class="perks-background"></div>
+                <li><img src="content/PERKS/CorruptIntervention.png" alt="CorruptIntervention"></li>
+                <li><img src="content/PERKS/PainResonance.png" alt="PainResonance"></li>
+                <li><img src="content/PERKS/DeadMansSwitch.png" alt="DeadManSwitch"></li>
+                <li><img src="content/PERKS/Agitation.png" alt="Agitation"></li>
+            </ul>
+            <p>...and 3 more</p>
+        </div>
+        <button type="button">Show full list</button>
+        <div class="alt-builds">
+            <button type="button"><i class="ri-arrow-down-line"></i></button>
+            <div class="build-information">
+                <h3 class="build-name">Generic Build</h3>
+                <ul class="perks-list">
+                    <li><img src="content/PERKS/CorruptIntervention.png" alt="CorruptIntervention"></li>
+                    <li><img src="content/PERKS/PainResonance.png" alt="PainResonance"></li>
+                    <li><img src="content/PERKS/DeadMansSwitch.png" alt="DeadManSwitch"></li>
+                    <li><img src="content/PERKS/Agitation.png" alt="Agitation"></li>
+                </ul>
+            </div>
+            <div class="build-information">
+                <h3 class="build-name">Generic Build</h3>
+                <ul class="perks-list">
+                    <li><img src="content/PERKS/CorruptIntervention.png" alt="CorruptIntervention"></li>
+                    <li><img src="content/PERKS/PainResonance.png" alt="PainResonance"></li>
+                    <li><img src="content/PERKS/DeadMansSwitch.png" alt="DeadManSwitch"></li>
+                    <li><img src="content/PERKS/Agitation.png" alt="Agitation"></li>
+                </ul>
+            </div>
+            <div class="build-information">
+                <h3 class="build-name">Generic Build</h3>
+                <ul class="perks-list">
+                    <li><img src="content/PERKS/CorruptIntervention.png" alt="CorruptIntervention"></li>
+                    <li><img src="content/PERKS/PainResonance.png" alt="PainResonance"></li>
+                    <li><img src="content/PERKS/DeadMansSwitch.png" alt="DeadManSwitch"></li>
+                    <li><img src="content/PERKS/Agitation.png" alt="Agitation"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+$structure = '';
+foreach($contents as $killer => $details) {
+    $structure .= '<div class="perks-profile">';
+        $structure .= '<div class="profile-image">';
+            $structure .= '<div class="profile-background"></div>';
+            $structure .= '<div class="role-fog is-killer"></div>';
+            $structure .= '<img src="content/killer_portraits/'.$details['image'].'" alt="'.$killer.' image">';
+        $structure .= '</div>';
+        $structure .= '<div class="profile-content">';
+            $structure .= '<h2 class="profile-name">'.$killer.'</h2>';
+            $structure .= '<div class="build-information">';
+            if(!empty($details['builds'])) {
+                $firstBuildName = array_key_first($details['builds']);
+                $structure .= '<h3 class="build-name">'.$firstBuildName.'</h3>';
+                $structure .= '<ul class="perks-list">';
+                    $structure .= '<div class="perks-background"></div>';
+                    $firstBuildPerks = $details['builds'][$firstBuildName];
+                    for($i = 0; $i < count($firstBuildPerks); $i++) {
+                        $perkWords = explode(' ', $firstBuildPerks[$i]);
+                        $perkName = '';
+                        foreach($perkWords as $word) {
+                            $perkName .= $word;
+                        }
+                        $structure .= '<li><img src="content/perk_icons/'.$perkName.'.png" alt="'.$perkName.' icon"></li>';
+                    }
+                $structure .= '</ul>';
+                $structure .= '<p>...and '.(count($details['builds']) - 1).'</p>';
+            }
+            $structure .= '</div>';
+            $structure .= '<button type="button">Show full list</button>';
+            $structure .= '<div class="alt-builds">';
+                $structure .= '<button type="button"><i class="ri-arrow-down-line"></i></button>';
+                foreach($details['builds'] as $build => $perks){
+                    $structure .= '<div class="build-information">';
+                        $structure .= '<h3 class="build-name">'.$build.'</h3>';
+                        $structure .= '<ul class="perks-list">';
+                            for($i = 0; $i < count($perks); $i++) {
+                                $perkWords = explode(' ', $perks[$i]);
+                                $perkName = '';
+                                foreach($perkWords as $word) {
+                                    $perkName .= $word;
+                                }
+                                $structure .= '<li><img src="content/PERKS/'.$perkName.'.png" alt="'.$perkName.' icon"></li>';
+                            }
+                        $structure .= '</ul>';
+                    $structure .= '</div>';
+                }
+            $structure .= '</div>';
+        $structure .= '</div>';
+    $structure .= '</div>';
+}
+
+return $structure;

@@ -10,42 +10,51 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST" id="build-inserter">
-        <h1>Insert new build</h1>
-        <label>Name: 
+    <form action="" method="POST" id="build-inserter" class="form-panel">
+        <h1 class="heading">Insert new build</h1>
+        <label>
+            <p>Name:</p>
             <input type="text" name="build-name" autocomplete="off" required>
         </label>
-        <label>Character_type:
+        <label>
+            <p>Character_type:</p>
             <select name="select-chars" id="select-chars" required>
                 <option value="killer">Killer</option>
                 <option value="survivor">Survivor</option>
             </select>
         </label>
-        <label>Character_id:
+        <label>
+            <p>Character_id:</p>
             <select name="chars-and-names" id="chars-and-names" required>
                 <?php c_returnSelectStruct('killer'); ?>
             </select>
         </label>
-        <label>Perk slot 1:
-            <input type="text" name="perk1" list="perksList" required>
+        <label>
+            <p>Perk slot 1:</p>
+            <input type="text" name="perk1" list="perksList" autocomplete="off" required>
         </label>
-        <label>Perk slot 2:
-            <input type="text" name="perk2" list="perksList" required>
+        <label>
+            <p>Perk slot 2:</p>
+            <input type="text" name="perk2" list="perksList" autocomplete="off" required>
         </label>
-        <label>Perk slot 3:
-            <input type="text" name="perk3" list="perksList" required>
+        <label>
+            <p>Perk slot 3:</p>
+            <input type="text" name="perk3" list="perksList" autocomplete="off" required>
         </label>
-        <label>Perk slot 4:
-            <input type="text" name="perk4" list="perksList" required>
+        <label>
+            <p>Perk slot 4:</p>
+            <input type="text" name="perk4" list="perksList" autocomplete="off" required>
         </label>
-        <label>Description:
+        <label>
+            <p>Description:</p>
             <input type="text" name="build-desc" placeholder="add ', ' between each" autocomplete="off" required>
         </label>
-        <input type="submit" name="s1" value="Add build">
+        <input type="submit" name="s1" value="Add build" class="add-build-btn">
     </form>
-    <form action="" method="POST" id="build-remover">
-        <h1>Remove existing build</h1>
-        <label>Select for:
+    <form action="" method="POST" id="build-remover" class="form-panel">
+        <h1 class="heading">Remove existing build</h1>
+        <label>
+            <p>Select for:</p>
             <select name="builds-select" id="builds-select">
                 <option value="killer">Killers</option>
                 <option value="survivor">Survivors</option>
@@ -55,7 +64,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <!-- <th>id</th> -->
                         <th>character</th>
                         <th>build name</th>
                         <th>action</th>
@@ -67,7 +76,7 @@
             </table>
         </div>
     </form>
-    <div id="main-page-btn"><a href="../index.php">Main page</a></div>
+    <div id="main-page-btn"><a href="../">Main page</a></div>
     <datalist id="perksList">
         <?php c_returnPerksList(); ?>
     </datalist>

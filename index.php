@@ -46,14 +46,10 @@
         </div>
         <button type="button" id="powrot">POWRÓT JAK COŚ</button>
         <div class="category-section" id="killers-category">
-            <?php
-                c_getKillers()
-            ?>
+            <?php c_getKillers(); ?>
         </div>
         <div class="category-section" id="survivors-category">
-            <?php
-                c_getSurvs();
-            ?>
+            <?php c_getSurvs(); ?>
         </div>
     </main>
     <footer>

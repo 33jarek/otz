@@ -25,7 +25,7 @@
         if (!in_array($type, $allowed)) return '';
 
         $sql = "
-            SELECT builds.id AS build_id, {$type}s.name AS {$type}_name, builds.name AS build_name FROM builds
+            SELECT {$type}s.name AS {$type}_name, builds.name AS build_name FROM builds
             INNER JOIN {$type}s ON {$type}s.id = builds.character_id
             WHERE builds.character_type = '$type';
         ";
@@ -77,7 +77,7 @@
     function m_deleteBuild() {
         global $conn;
 
-        $id = intval($_POST['del']);
+        $id = intval($_GET['del']);
 
         $sql = "DELETE FROM builds WHERE id = $id";
         $result = mysqli_query($conn, $sql);
@@ -132,7 +132,7 @@
     if(isset($_POST['s1'])) {
         m_insertBuild();
     }
-    if(isset($_POST['del'])) {
+    if(isset($_GET['del'])) {
         m_deleteBuild();
     }
 ?>

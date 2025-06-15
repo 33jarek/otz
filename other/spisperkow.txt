@@ -1,0 +1,91 @@
+Corrupt Intervention
+Pain Resonance
+Dead Mans Switch
+Agitation
+Grim Embrace
+Ruin
+Wretched Fate
+Thrill Of The Hunt
+Deadlock
+Coupde Grâce
+No One Escapes Death
+SloppyButcher
+SpiesFromTheShadows
+PopGoesTheWeasel
+Bamboozle
+Eruption
+BloodFavour
+LethalPursuer
+Barbecue&Chilli
+Leverage
+Predator
+ANursesCalling
+ThrillingTremors
+Tinkerer
+NoWayOut
+CrowdControl
+Pentimento
+Retribution
+Whispers
+Undying
+NowheretoHide
+FloodsOfRage
+JaggedCompass
+Discordance
+ZanshinTactics
+ImAllEars
+HuntressLullaby
+PlayWithYourFood
+SuperiorAnatomy
+SaveTheBestForLast
+FriendsTilTheEnd
+WretchedFate
+HauntedGround
+Surge
+TheThirdSeal
+MercilessStorm
+Overcharge
+Oppression
+RapidBrutality
+FranklinsDemise
+Unforeseen
+BitterMurmur
+KnockOut
+FireUp
+RememberMe
+Plaything
+MakeYourChoice
+Surveillance
+GiftOfPain
+DyingLight
+Rancor
+InfectiousFright
+DarkDevotion
+Furtive Chase
+Deerstalker
+CruelLimits
+TrailOfTorment
+Starstruck
+Gearhead
+Brutal Strength
+THWACK
+DarknessRevealed
+Mindbreaker
+Dominance
+DevourHope
+DragonsGrip
+Dissolution
+AwakenedAwareness
+Terminus
+FaceTheDarkness
+MachineLearning
+UltimateWeapon
+LanguidTouch
+HumanGreed
+PhantomFear
+
+INSERT INTO perks(name, description)
+VALUES('Corrupt Intervention', 'Coś sobie robi 1'),
+('Pain Resonance', 'Ten też coś robi 2'),
+('Dead Mans Switch', 'Ale mocny perk 3'),
+('Agitation', 'Do nerfa 4');

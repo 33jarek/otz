@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Lexend';
+    src: url(../fonts/Lexend.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    height: 100dvh;
+    font-family: 'Lexend';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+}
+button, input {
+    font-family: inherit;
+}
+#build-inserter h1 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+a {
+    text-decoration: none;
+    color: hsl(347, 66%, 49%);
+}
+a:hover {
+    text-decoration: underline;
+}
+table {
+    /* padding: 4px; */
+    width: 100%;
+    /* position: relative; */
+}
+table tr:nth-child(even) {
+    background-color: hsl(0, 0%, 18%);
+}
+td, th {
+    padding: 4px 16px;
+    text-align: center;
+}
+th {
+    cursor: pointer;
+}
+thead {
+    position: sticky;
+    top: 0;
+    background-color: hsl(0, 0%, 15%);
+}
+td {
+    cursor: default;
+}
+#build-table-holder {
+    max-height: 300px;
+    /* overflow-y: auto; */
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 15%);
+    margin-top: 8px;
+    overflow-y: auto;
+}
+#build-table-holder::-webkit-scrollbar {
+    width: 5px;
+}
+#build-table-holder::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 90%, .1);
+    border-radius: 1000px;
+}
+
+#main-page-btn {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    translate: -50% -50%;
+}

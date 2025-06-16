@@ -121,17 +121,30 @@
 
                     $structure .= '<dialog class="builds-list">';
                         $structure .= '<form method="dialog" class="dialog-form">';
-                            $structure .= '<button><i class="ri-arrow-down-line"></i></button>';
-                            foreach($details['builds'] as $build => $buildData){
-                            $structure .= '<div class="build">';
-                                $structure .= '<h3 class="build-name">'.$build.'</h3>';
-                                $structure .= '<ul class="perks-list">';
-                                foreach($buildData['perks'] as $perkName) {
-                                    $structure .= renderPerkImageListItem($perkName);
+                            $structure .= '<button class="close-dialog-btn"><i class="ri-close-large-fill"></i></button>';
+                            $structure .= '<div class="dialog-form-content">';
+                                foreach($details['builds'] as $build => $buildData){
+                                $structure .= '<div class="build">';
+                                    $structure .= '<h2 class="build-name">'.$build.'</h2>';
+                                    $structure .= '<ul class="perks-list">';
+                                    foreach($buildData['perks'] as $perkName) {
+                                        $structure .= renderPerkImageListItem($perkName);
+                                    }
+                                    $structure .= '</ul>';
+                                    $structure .= '<div class="additional-info">';
+                                        $structure .= '<div class="about-build">';
+                                            $structure .= '<h3>About the build:</h3>';
+                                            $structure .= '<ul class="build-info">';
+                                                $descItems = explode(', ', $buildData['build-desc']);
+                                                foreach($descItems as $desc) {
+                                                    $structure .= '<li>'.$desc.'</li>';
+                                                }
+                                            $structure .= '</ul>';
+                                        $structure .= '</div>';
+                                    $structure .= '</div>';
+                                $structure .= '</div>';
                                 }
-                                $structure .= '</ul>';
                             $structure .= '</div>';
-                            }
                         $structure .= '</form>';
                     $structure .= '</dialog>';
                 $structure .= '</div>';

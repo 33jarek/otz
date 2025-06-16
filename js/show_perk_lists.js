@@ -3,6 +3,6 @@ const fullLists = document.querySelectorAll('.builds-list');
 
 showFullListBtns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
-        fullLists[i].classList.add('shown');
+        fullLists[i].showModal();
     });
 });

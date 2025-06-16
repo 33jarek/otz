@@ -119,19 +119,21 @@
                     }
                     $structure .= '</div>';
 
-                    $structure .= '<div class="builds-list">';
-                        $structure .= '<button type="button"><i class="ri-arrow-down-line"></i></button>';
-                        foreach($details['builds'] as $build => $buildData){
-                        $structure .= '<div class="build">';
-                            $structure .= '<h3 class="build-name">'.$build.'</h3>';
-                            $structure .= '<ul class="perks-list">';
-                            foreach($buildData['perks'] as $perkName) {
-                                $structure .= renderPerkImageListItem($perkName);
+                    $structure .= '<dialog class="builds-list">';
+                        $structure .= '<form method="dialog" class="dialog-form">';
+                            $structure .= '<button><i class="ri-arrow-down-line"></i></button>';
+                            foreach($details['builds'] as $build => $buildData){
+                            $structure .= '<div class="build">';
+                                $structure .= '<h3 class="build-name">'.$build.'</h3>';
+                                $structure .= '<ul class="perks-list">';
+                                foreach($buildData['perks'] as $perkName) {
+                                    $structure .= renderPerkImageListItem($perkName);
+                                }
+                                $structure .= '</ul>';
+                            $structure .= '</div>';
                             }
-                            $structure .= '</ul>';
-                        $structure .= '</div>';
-                        }
-                    $structure .= '</div>';
+                        $structure .= '</form>';
+                    $structure .= '</dialog>';
                 $structure .= '</div>';
             $structure .= '</div>';
         }

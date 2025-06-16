@@ -64,7 +64,7 @@
             <table>
                 <thead>
                     <tr>
-                        <!-- <th>id</th> -->
+                        <th>id</th>
                         <th>character</th>
                         <th>build name</th>
                         <th>action</th>

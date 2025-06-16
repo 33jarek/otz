@@ -25,7 +25,7 @@
         if (!in_array($type, $allowed)) return '';
 
         $sql = "
-            SELECT {$type}s.name AS {$type}_name, builds.name AS build_name FROM builds
+            SELECT builds.id AS build_id, {$type}s.name AS {$type}_name, builds.name AS build_name FROM builds
             INNER JOIN {$type}s ON {$type}s.id = builds.character_id
             WHERE builds.character_type = '$type';
         ";

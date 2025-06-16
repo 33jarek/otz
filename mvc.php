@@ -54,7 +54,7 @@
                 ],
                 'build-desc' => $build["build_desc"]
             ];
-        }
+        };
         return $contents;
     }
 

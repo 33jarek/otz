@@ -47,7 +47,7 @@
             $perkName = $_POST["perk$i"];
             $index = array_search($perkName, $perksList);
             if($index === false) {
-                echo "Perk $perkName does not exist!";
+                echo "Slot{$i}: Perk \"{$perkName}\" does not exist!";
                 return;
             }
             $perks[$i] = ($index+1); // +1 bo potrzebny jest index 1-n, a array liczy od 0
@@ -108,7 +108,7 @@
         $lines = '';
         while($rows = mysqli_fetch_row($result)) {
             $lines .= '<tr>';
-                for($i = 0; $i < count($rows); $i++) {
+                for($i = 1; $i < count($rows); $i++) {
                     $lines .= "<td>{$rows[$i]}</td>";
                 }
                 $lines .= "<td><a href=\"?del={$rows[0]}\">Delete</a></td>";

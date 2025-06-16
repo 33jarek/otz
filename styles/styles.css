@@ -285,17 +285,12 @@ body {
     z-index: -1;
 } */
 
-.shown {
-    display: block !important;
-}
-
 #powrot {
     position: fixed;
     right: 0;
     top: 0;
     z-index: 100;
     padding: 8px;
-
 }
 .role-fog {
     position: absolute;

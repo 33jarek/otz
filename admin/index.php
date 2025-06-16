@@ -64,10 +64,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>character</th>
-                        <th>build name</th>
-                        <th>action</th>
+                        <th>Character</th>
+                        <th>Build Name</th>
+                        <th>✖</th>
                     </tr>
                 </thead>
                 <tbody>

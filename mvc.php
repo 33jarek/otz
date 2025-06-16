@@ -1,115 +1,65 @@
-<?php
-    $connection = mysqli_connect('localhost', 'root', '', 'dbd-db');
-    // ------------------------------------------------
+<?php $conn = mysqli_connect('localhost', 'root', '', 'dbd-db');
 
     // MODEL
-    function m_getKillers() {
-        global $connection;
+    function m_displayCharacters($type) {
+        global $conn;
 
-        $contents = [];
-        $kw = "SELECT id, name, image_url FROM killers";
-        $wynik = mysqli_query($connection, $kw);
-        if (!$wynik) {
-            return [];
-        }
-        while($killer = mysqli_fetch_assoc($wynik)) {
-            $killerId = $killer['id'];
-            $killerName = $killer['name'];
-            $killerImage = $killer['image_url'];
-            $contents[$killerName] = [
-                'type' => 'killer',
-                'image' => $killerImage,
-                'builds' => []
-            ];
-            $kw1 = "
-                SELECT 
-                    builds.name AS build_name,
-                    builds.description AS build_desc,
-                    perk1.name AS slot1_name,
-                    perk2.name AS slot2_name,
-                    perk3.name AS slot3_name,
-                    perk4.name AS slot4_name
-                FROM builds
-                JOIN perks AS perk1 ON builds.slot1 = perk1.id
-                JOIN perks AS perk2 ON builds.slot2 = perk2.id
-                JOIN perks AS perk3 ON builds.slot3 = perk3.id
-                JOIN perks AS perk4 ON builds.slot4 = perk4.id
-                WHERE builds.character_id = $killerId AND builds.character_type = 'killer';
-            ";
-            $wynik1 = mysqli_query($connection, $kw1);
-            if ($wynik1) {
-                while($build = mysqli_fetch_assoc($wynik1)) {
-                    $contents[$killerName]['builds'][$build['build_name']] = [
-                        'perks' => [
-                            $build['slot1_name'],
-                            $build['slot2_name'],
-                            $build['slot3_name'],
-                            $build['slot4_name']
-                        ],
-                        'build-desc' => $build['build_desc']
-                    ];
-                }
-            }
-        }
-        
-        return createProfile($contents);
+        $sql = "SELECT id, name, image_url FROM {$type}s";
+        $result = mysqli_query($conn, $sql);
+
+        $contents = m_returnCharacters($result, $type);
+        return createCharacterPanels($contents);
     }
-    function m_getSurvs() {
-        global $connection;
+    function m_returnCharacters($result, $type) {
+        $contents = [];
+        while($char = mysqli_fetch_assoc($result)) {
+            $charId    = $char['id'];
+            $charName  = $char['name'];
+            $charImage = $char['image_url'];
+            $contents[$charName] = [
+                'type' => "$type",
+                'image' => $charImage,
+                'builds' => m_returnBuilds($type, $charId, $charName)
+            ];
+        }
+        return $contents;
+    }
+    function m_returnBuilds($type, $charId, $charName) {
+        global $conn;
 
         $contents = [];
-        $kw = "SELECT id, name, image_url FROM survivors";
-        $wynik = mysqli_query($connection, $kw);
-        if (!$wynik) {
-            return [];
-        }
-        while($survivor = mysqli_fetch_assoc($wynik)) {
-            $survivorId = $survivor['id'];
-            $survivorName = $survivor['name'];
-            $survivorImage = $survivor['image_url'];
-            $contents[$survivorName] = [
-                'type' => 'survivor',
-                'image' => $survivorImage,
-                'builds' => []
+        $sql = "
+            SELECT 
+                builds.name AS build_name,
+                builds.description AS build_desc,
+                perk1.name AS slot1_name,
+                perk2.name AS slot2_name,
+                perk3.name AS slot3_name,
+                perk4.name AS slot4_name
+            FROM builds
+            JOIN perks AS perk1 ON builds.slot1 = perk1.id
+            JOIN perks AS perk2 ON builds.slot2 = perk2.id
+            JOIN perks AS perk3 ON builds.slot3 = perk3.id
+            JOIN perks AS perk4 ON builds.slot4 = perk4.id
+            WHERE builds.character_id = $charId AND builds.character_type = '$type';
+        ";
+        $result = mysqli_query($conn, $sql);
+        while($build = mysqli_fetch_assoc($result)) {
+            $contents[$charName]['builds'][$build['build_name']] = [
+                'perks' => [
+                    $build['slot1_name'],
+                    $build['slot2_name'],
+                    $build['slot3_name'],
+                    $build['slot4_name']
+                ],
+                'build-desc' => $build['build_desc']
             ];
-            $kw1 = "
-                SELECT 
-                    builds.name AS build_name,
-                    builds.description AS build_desc,
-                    perk1.name AS slot1_name,
-                    perk2.name AS slot2_name,
-                    perk3.name AS slot3_name,
-                    perk4.name AS slot4_name
-                FROM builds
-                JOIN perks AS perk1 ON builds.slot1 = perk1.id
-                JOIN perks AS perk2 ON builds.slot2 = perk2.id
-                JOIN perks AS perk3 ON builds.slot3 = perk3.id
-                JOIN perks AS perk4 ON builds.slot4 = perk4.id
-                WHERE builds.character_id = $survivorId AND builds.character_type = 'survivor';
-            ";
-            $wynik1 = mysqli_query($connection, $kw1);
-            if ($wynik1) {
-                while($build = mysqli_fetch_assoc($wynik1)) {
-                    $contents[$survivorName]['builds'][$build['build_name']] = [
-                        'perks' => [
-                            $build['slot1_name'],
-                            $build['slot2_name'],
-                            $build['slot3_name'],
-                            $build['slot4_name']
-                        ],
-                        'build-desc' => $build['build_desc']
-                    ];
-                }
-            }
         }
-        
-        return createProfile($contents);
+        return $contents;
     }
 
     // VIEW
-    function createProfile($contents) {
-        global $connection;
-
+    function createCharacterPanels($contents) {
         $structure = '';
         foreach($contents as $killer => $details) {
             $structure .= '<div class="character-profile">';
@@ -184,13 +134,8 @@
         return $structure;
     }
     // CONTROLLER
-    function c_getKillers() {
-        echo m_getKillers();
+    function c_displayCharacters($type) {
+        echo m_displayCharacters($type);
     }
-    function c_getSurvs() {
-        echo m_getSurvs();
-    }
-
-    // ------------------------------------------------
-    // mysqli_close($connection);
+    
 ?>

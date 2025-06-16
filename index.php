@@ -1,5 +1,4 @@
 <?php include 'mvc.php'?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +45,10 @@
         </div>
         <button type="button" id="powrot">POWRÓT JAK COŚ</button>
         <div class="category-section" id="killers-category">
-            <?php c_getKillers(); ?>
+            <?php c_displayCharacters('killer'); ?>
         </div>
         <div class="category-section" id="survivors-category">
-            <?php c_getSurvs(); ?>
+            <?php c_displayCharacters('survivor'); ?>
         </div>
     </main>
     <footer>
@@ -57,41 +56,15 @@
     </footer>
     <script src="js/gsap/gsap.min.js"></script>
 
-    <script>
-        const btns = document.querySelectorAll('#categories-list .category-select');
-        const hdr = document.querySelector('#hdr');
-        const categories = document.querySelectorAll('.category-section');
+    <script src="js/choose_category.js"></script>
+    <script src="js/show_perk_lists.js"></script>
+    <script src="js/back_to_menu.js"></script>
 
-        btns.forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                gsap.to(hdr, {
-                    clipPath: 'polygon(0 0, 100% 0, 100% 0%, 0 0%)'
-                });
-                categories.forEach((category, j) => {
-                    i === j ? category.style.display = 'grid' : category.style.display = 'none';
-                });
-            });
+    <!-- UNCOMMENT TO TUNR OFF CATEGORY SELECT -->
+    <!-- <script>
+        gsap.set(hdr, {
+            clipPath: 'polygon(0 0, 100% 0, 100% 0%, 0 0%)'
         });
-
-        // gsap.set(hdr, {
-        //     clipPath: 'polygon(0 0, 100% 0, 100% 0%, 0 0%)'
-        // });
-
-        const showFullListBtns = document.querySelectorAll('.btn-show-list');
-        const fullLists = document.querySelectorAll('.builds-list');
-
-        showFullListBtns.forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                fullLists[i].classList.add('shown');
-            });
-        });
-
-        const powrot = document.querySelector('#powrot');
-        powrot.addEventListener('click', () => {
-            gsap.to(hdr, {
-                clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-            })
-        });
-    </script>
+    </script> -->
 </body>
 </html>

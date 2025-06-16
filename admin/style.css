@@ -21,7 +21,7 @@ button, input, select {
     font-family: inherit;
 }
 input[type="text"], select {
-    background-color: transparent;
+    background-color: hsl(0, 0%, 15%);
     border: none;
     /* border-top: 2px solid white; */
     border-bottom: 2px solid white;
@@ -36,9 +36,6 @@ input[type="text"], select {
 }
 select {
     cursor: pointer;
-}
-select:open {
-    color: black;
 }
 a {
     text-decoration: none;
@@ -60,7 +57,7 @@ a:hover {
     translate: 0 -50%;
     z-index: 1;
     padding-inline: 4px;
-    background-color: rgb(30, 30, 30);
+    /* background-color: rgb(30, 30, 30); */
     font-size: .7rem;
 }
 .form-panel label {

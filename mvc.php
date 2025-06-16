@@ -19,12 +19,12 @@
             $contents[$charName] = [
                 'type' => "$type",
                 'image' => $charImage,
-                'builds' => m_returnBuilds($type, $charId, $charName)
+                'builds' => m_returnBuilds($type, $charId)
             ];
         }
         return $contents;
     }
-    function m_returnBuilds($type, $charId, $charName) {
+    function m_returnBuilds($type, $charId) {
         global $conn;
 
         $contents = [];
@@ -45,20 +45,35 @@
         ";
         $result = mysqli_query($conn, $sql);
         while($build = mysqli_fetch_assoc($result)) {
-            $contents[$charName]['builds'][$build['build_name']] = [
+            $contents[$build['build_name']] = [
                 'perks' => [
-                    $build['slot1_name'],
-                    $build['slot2_name'],
-                    $build['slot3_name'],
-                    $build['slot4_name']
+                    $build["slot1_name"],
+                    $build["slot2_name"],
+                    $build["slot3_name"],
+                    $build["slot4_name"]
                 ],
-                'build-desc' => $build['build_desc']
+                'build-desc' => $build["build_desc"]
             ];
         }
         return $contents;
     }
 
     // VIEW
+    function renderPerkImageListItem($perkName) {
+        $convertedName = '';
+        $perkWords = explode(' ', $perkName);
+        foreach($perkWords as $word) {
+            if(strpos($word, "'") !== false) {
+                $word = str_replace("'", "", $word);
+            }
+            if(strpos($word, ":") !== false) {
+                $word = str_replace(":", "", $word);
+            }
+            $convertedName .= $word;
+        }
+        $perkListItems = '<li><img src="content/perk_icons/'.$convertedName.'.png" alt="'.$perkName.' icon"></li>';
+        return $perkListItems;
+    }
     function createCharacterPanels($contents) {
         $structure = '';
         foreach($contents as $killer => $details) {
@@ -81,13 +96,8 @@
                         $structure .= '<ul class="perks-list">';
                             // $structure .= '<div class="perks-background"></div>';
                             $firstBuildPerks = $details['builds'][$firstBuildName]['perks'];
-                            for($i = 0; $i < count($firstBuildPerks); $i++) {
-                                $perkWords = explode(' ', $firstBuildPerks[$i]);
-                                $perkName = '';
-                                foreach($perkWords as $word) {
-                                    $perkName .= $word;
-                                }
-                                $structure .= '<li><img src="content/perk_icons/'.$perkName.'.png" alt="'.$perkName.' icon"></li>';
+                            foreach($firstBuildPerks as $perkName) {
+                                $structure .= renderPerkImageListItem($perkName);
                             }
                         $structure .= '</ul>';
 
@@ -115,13 +125,8 @@
                         $structure .= '<div class="build">';
                             $structure .= '<h3 class="build-name">'.$build.'</h3>';
                             $structure .= '<ul class="perks-list">';
-                            foreach($buildData['perks'] as $perk) {
-                                $perkWords = explode(' ', $perk);
-                                $perkName = '';
-                                foreach($perkWords as $word) {
-                                    $perkName .= $word;
-                                }
-                                $structure .= '<li><img src="content/perk_icons/'.$perkName.'.png" alt="'.$perkName.' icon"></li>';
+                            foreach($buildData['perks'] as $perkName) {
+                                $structure .= renderPerkImageListItem($perkName);
                             }
                             $structure .= '</ul>';
                         $structure .= '</div>';
@@ -133,9 +138,10 @@
 
         return $structure;
     }
+    
     // CONTROLLER
     function c_displayCharacters($type) {
         echo m_displayCharacters($type);
     }
-    
+
 ?>

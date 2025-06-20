@@ -51,14 +51,25 @@
             <?php c_displayCharacters('survivor'); ?>
         </div>
     </main>
+    <dialog class="perk-display">
+        <form method="dialog" class="dialog-form">
+            <button class="close-dialog-btn"><i class="ri-close-large-fill"></i></button>
+            <div class="form-content">
+                
+            </div>
+        </form>
+    </dialog>
     <footer>
         
     </footer>
     <script src="js/gsap/gsap.min.js"></script>
+    <script src="js/gsap/Observer.min.js"></script>
 
     <script src="js/choose_category.js"></script>
     <script src="js/show_perk_lists.js"></script>
     <script src="js/back_to_menu.js"></script>
+    <script src="js/show_perk_name.js"></script>
+    <script src="js/ajax_requests.js"></script>
 
     <!-- UNCOMMENT TO TUNR OFF CATEGORY SELECT -->
     <!-- <script>

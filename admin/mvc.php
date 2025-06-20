@@ -1,7 +1,7 @@
 <?php $conn = mysqli_connect('localhost', 'root', '', 'dbd-db');
 
     // MODEL
-    function m_returnSelectStruct($type) {
+    function m_returnSelectStruct($type, $datalist) {
         global $conn;
 
         $allowed = ['killer', 'survivor'];
@@ -9,14 +9,21 @@
 
         $sql = "SELECT id, name FROM {$type}s";
         $result = mysqli_query($conn, $sql);
-        return generateOptions($result);
+        return generateOptions($result, $datalist);
     }
-    function m_returnPerksList() {
+    function m_returnPerksList($datalist) {
         global $conn;
 
-        $sql = "SELECT id, name FROM perks";
+        $sql = "SELECT id, name, obtainment, description FROM perks";
         $result = mysqli_query($conn, $sql);
-        return generateDatalist($result);
+
+        $firstRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name, obtainment FROM perks LIMIT 1"));
+        $optionsHtml = generateOptions($result, $datalist);
+
+        return [
+            'options' => $optionsHtml,
+            'defaultPerk' => $firstRow
+        ];
     }
     function m_returnTableStruct($type) {
         global $conn;
@@ -90,17 +97,14 @@
     }
 
     // VIEW
-    function generateOptions($result) {
+    function generateOptions($result, $datalist) {
         $options = '';
         while($row = mysqli_fetch_assoc($result)) {
-            $options .= "<option value=\"{$row['id']}\">{$row['name']}</option>";
-        }
-        return $options;
-    }
-    function generateDatalist($result) {
-        $options = '';
-        while($row = mysqli_fetch_assoc($result)) {
-            $options .= "<option value=\"{$row['name']}\">id: {$row['id']}</option>";
+            if($datalist === true) {
+                $options .= "<option value=\"{$row['name']}\">id: {$row['id']}</option>";
+            } else {
+                $options .= "<option value=\"{$row['id']}\">{$row['name']}</option>";
+            }
         }
         return $options;
     }
@@ -118,14 +122,16 @@
     }
 
     // CONTROLLER
-    function c_returnSelectStruct($type) {
-        echo m_returnSelectStruct($type);
+    function c_returnSelectStruct($type, $datanase = false) {
+        echo m_returnSelectStruct($type, $datanase);
     }
     function c_returnTableStruct($type) {
         echo m_returnTableStruct($type);
     }
-    function c_returnPerksList() {
-        echo m_returnPerksList();
+    function c_returnPerksList($datalist = false) {
+        $data = m_returnPerksList($datalist);
+        echo $data['options'];
+        return $data['defaultPerk'];
     }
 
     // CHECKS

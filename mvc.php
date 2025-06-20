@@ -1,5 +1,9 @@
 <?php $conn = mysqli_connect('localhost', 'root', '', 'dbd-db');
 
+    // $noApost = mysqli_real_escape_string($conn, 'Your prayers invoke a dark power that meddles with the Survivors\' chances of survival. <ul><li>At the start of the Trial, the <span class="object">3 Generators</span> located farthest from you are blocked by The <a href="https://deadbydaylight.wiki.gg/wiki/Entity" target="_blank" class="link">Entity</a> for <span class="t1">80</span>/<span class="t2">100</span>/<span class="t3">120</span> seconds.</li></ul><p class="note">Corrupt Intervention deactivates prematurely once the first Survivor is put into the <a href="https://deadbydaylight.wiki.gg/wiki/Health_States#Dying_State" target="_blank" class="link">Dying State</a>.</p><p class="quote">"It shall be known across the land that the Gods curse the unfaithful." — (The Tablet of Adiris, 3.7)</p>');
+    // $sql = "UPDATE perks SET description = '$noApost' WHERE id = 53";
+    // mysqli_query($conn, $sql);
+
     // MODEL
     function m_displayCharacters($type) {
         global $conn;
@@ -57,21 +61,50 @@
         };
         return $contents;
     }
+    function m_returnPerkInfo($name) {
+        global $conn;
+
+        $name = mysqli_real_escape_string($conn, $name);
+        $sql = "SELECT * FROM perks WHERE name = '{$name}'";
+        $result = mysqli_query($conn, $sql);
+
+        return renderPerkInfo($result);
+    }
+    function formatPerkName($string, $chars) {
+        $newString = '';
+        $stringWords = explode(' ', $string);
+        foreach ($stringWords as $word) {
+            foreach ($chars as $char) {
+                $word = str_replace($char, '', $word);
+            }
+            $newString .= $word;
+        }
+        return $newString;
+    }
 
     // VIEW
+    function renderPerkInfo($result) {
+        $info = '';
+        $row = mysqli_fetch_assoc($result);
+        if(!$row) return '<p>PERK NOT FOUND!</p>';
+
+        $info .= "<h3>This perk is obtained from {$row['obtainment']}</h3>";
+        $info .= '<div class="perk-details">';
+            $info .= '<div class="about-perk">';
+                $info .= "<h2>{$row['name']}</h2>";
+                $info .= '<div class="details-holder">';
+                    $info .= "<p>{$row['description']}</p>";
+                $info .= '</div>';
+            $info .= '</div>';
+            $imgName = formatPerkName($row['name'], ["'", ":"]);
+            $info .= "<div><img src=\"content/perk_icons/{$imgName}.png\" alt=\"{$row['name']} icon\"></div>";
+        $info .= '</div>';
+
+        return $info;
+    }
     function renderPerkImageListItem($perkName) {
-        $convertedName = '';
-        $perkWords = explode(' ', $perkName);
-        foreach($perkWords as $word) {
-            if(strpos($word, "'") !== false) {
-                $word = str_replace("'", "", $word);
-            }
-            if(strpos($word, ":") !== false) {
-                $word = str_replace(":", "", $word);
-            }
-            $convertedName .= $word;
-        }
-        $perkListItems = '<li><img src="content/perk_icons/'.$convertedName.'.png" alt="'.$perkName.' icon"></li>';
+        $convertedName = formatPerkName($perkName, ["'", ":"]);
+        $perkListItems = '<li><img class="perk-icon" src="content/perk_icons/'.$convertedName.'.png" alt="'.$perkName.' icon"></li>';
         return $perkListItems;
     }
     function createCharacterPanels($contents) {
@@ -157,6 +190,9 @@
     // CONTROLLER
     function c_displayCharacters($type) {
         echo m_displayCharacters($type);
+    }
+    function c_returnPerkInfo($name) {
+        echo m_returnPerkInfo($name);
     }
 
 ?>

@@ -8,7 +8,7 @@ function requestXMLHttp(source, target, file) {
     XMLreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     XMLreq.onload = () => target.innerHTML = XMLreq.responseText;
     XMLreq.send(`${name}=${encodeURIComponent(value)}`);
-}
+};
 
 // LISTEN TO KILLERS/SURVS SELECT AND RETRIEVE ALL CHARACTERS
 const selectChars = document.querySelector('#build-inserter #select-chars');
@@ -19,3 +19,12 @@ selectChars.addEventListener('change', () => requestXMLHttp(selectChars, charNam
 const selectBuilds = document.querySelector('#build-remover #builds-select');
 const tBody = document.querySelector('#build-table-holder table tbody');
 selectBuilds.addEventListener('change', () => requestXMLHttp(selectBuilds, tBody, 'return_builds.php'));
+
+// const selectPerk = document.querySelector('#perk-details');
+// const inputName = document.querySelector('#perk-name');
+// const inputObtainment = document.querySelector('#perk-obtainment');
+// selectPerk.addEventListener('change', () => {
+//     const name1 = inputName.getAttribute('name');
+//     const name2 = inputObtainment.getAttribute('name');
+
+// });

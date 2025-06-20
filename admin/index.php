@@ -6,10 +6,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../content/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../icons/remixicon.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <nav id="nav-bar">
+        <div class="format-menu">
+            <div class="new-blocks">
+                <p>Description blocks:</p>
+                <div class="drop-element" id="new-line-elm" draggable="true" data-elm-name="new-line">New line</div>
+                <div class="drop-element" id="list-elm" draggable="true" data-elm-name="list">- List</div>
+                <div class="drop-element note" id="note-elm" draggable="true" data-elm-name="note" data-elm-class="note">Note</div>
+                <div class="drop-element quote" id="quote-elm" draggable="true" data-elm-name="quote" data-elm-class="quote">Quote</div>
+            </div>
+            <div class="format-options">
+                <p>Text formatting:</p>
+                <div class="format-element link">Link</div>
+                <div class="format-element t1">Tier 1</div>
+                <div class="format-element t2">Tier 2</div>
+                <div class="format-element t3">Tier 3</div>
+                <div class="format-element object">Object</div>
+            </div>
+        </div>
+        <ul>
+            <li><button type="button" class="add-drop-item">+</button></li>
+        </ul>
+        <ul class="btns">
+            <li><button type="button">Add new build</button></li>
+            <li><button type="button">Remove Builds</button></li>
+            <li><button type="button" class="selected-tab">Modify Perks</button></li>
+        </ul>
+    </nav>
     <form action="" method="POST" id="build-inserter" class="form-panel">
         <h1 class="heading">Insert new build</h1>
         <label>
@@ -52,7 +80,7 @@
         <input type="submit" name="s1" value="Add build" class="add-build-btn">
     </form>
     <form action="" method="POST" id="build-remover" class="form-panel">
-        <h1 class="heading">Remove existing build</h1>
+        <h1 class="heading">Remove existing builds</h1>
         <label>
             <p>Select for:</p>
             <select name="builds-select" id="builds-select">
@@ -75,11 +103,54 @@
             </table>
         </div>
     </form>
+    <form action="" method="POST" id="edit-perks" class="form-panel">
+        <div class="form-wrapper">
+            <h1>Modify perk details</h1>
+            <label>
+                <p>Select perk:</p>
+                <select name="perk-details" id="perk-details">
+                    <?php
+                        $perk = c_returnPerksList();
+                    ?>
+                </select>
+            </label>
+            <label>
+                <p>Name:</p>
+                <input type="text" name="perk-name" id="perk-name" value="<?= htmlspecialchars($perk['name']); ?>" required>
+            </label>
+            <label>
+                <p>Obtainment:</p>
+                <input type="text" name="perk-obtainment" id="perk-obtainment" value="<?= htmlspecialchars($perk['obtainment']); ?>" required>
+            </label>
+            <div class="label">
+                <p>Description:</p>
+                <div class="drop-panel">
+            
+                </div>
+            </div>
+        </div>
+        <div class="details-preview">
+            <h3>This perk is obtained from -----</h3>
+            <div class="perk-details">
+                <div class="about-perk">
+                    <h2>-----</h2>
+                    <div class="details-holder">
+                        
+                    </div>
+                </div>
+                <div><img src="../content/perk_icons/CorruptIntervention.png" alt="Corrupt Intervention icon"></div>
+            </div>
+        </div>
+    </form>
     <div id="main-page-btn"><a href="../">Main page</a></div>
     <datalist id="perksList">
-        <?php c_returnPerksList(); ?>
+        <?php c_returnPerksList(true); ?>
     </datalist>
 
     <script src="js/ajax_requests.js"></script>
+    <script src="js/show_tabs.js"></script>
+    <script src="js/drop_menu.js"></script>
+    <script src="js/preview_perk_details.js"></script>
+    <script src="js/text_format.js"></script>
 </body>
 </html>

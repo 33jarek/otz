@@ -18,6 +18,8 @@
 img {
     max-width: 100%;
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 ul {
     list-style: none;
@@ -38,6 +40,17 @@ button, input {
 }
 .link {
     color: var(--clr-otz);
+}
+.object {
+    color: hsl(45, 77%, 62%);
+}
+.note {
+    color: hsl(0, 0%, 60%);
+    font-style: italic;
+}
+.quote {
+    color: hsl(41, 64%, 74%);
+    font-style: italic;
 }
 
 #otz {
@@ -238,16 +251,22 @@ body {
     background-image: linear-gradient(to top, transparent, hsl(0, 0%, 50%), transparent);
 }
 
-.character-profile .character-content .builds-list {
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+.character-profile .character-content .builds-list,
+.perk-display {
+    /* left: 50%;
+    top: 50%; */
+    /* translate: -50% -50%; */
+    inset: 0;
     background-color: hsl(240, 6%, 15%);
     border: none;
     border-radius: 8px;
-    z-index: 1000;
     overflow: visible;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    max-width: 1000px;
+}
+.perk-display {
+    max-width: 1250px;
 }
 .character-profile .character-content .builds-list .dialog-form .dialog-form-content {
     display: grid;
@@ -255,11 +274,39 @@ body {
     gap: 32px 64px;
     padding: 32px;
 }
+.perk-display .dialog-form {
+    padding: 32px;
+}
+.perk-display .dialog-form h3 {
+    color: hsl(0, 0%, 60%);
+    margin-bottom: 12px;
+}
+.perk-display .dialog-form h2 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.perk-display .dialog-form .perk-details {
+    display: flex;
+}
+.perk-display .dialog-form .perk-details ul {
+    padding-left: 32px;
+    margin-block: 4px;
+}
+.perk-display .dialog-form .perk-details ul li::marker {
+    content: '- ';
+}
+.perk-display .dialog-form .perk-details p {
+    margin-top: 4px;
+}
+/* .perk-display .dialog-form .details-holder > div{
+    align-items: center;
+} */
 .character-profile .character-content .builds-list::backdrop {
     background-color: hsla(0, 0%, 0%, 0.5);
 }
 
-.character-profile .character-content .builds-list .close-dialog-btn {
+.character-profile .character-content .builds-list .close-dialog-btn,
+.perk-display .close-dialog-btn {
     border: none;
     cursor: pointer;
     padding: 4px;
@@ -275,8 +322,13 @@ body {
     translate: 25% -25%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+.character-profile .character-content .builds-list .close-dialog-btn i,
+.perk-display .close-dialog-btn i {
+    pointer-events: none;
+}
 
-.character-profile .character-content .builds-list .dialog-form {
+.character-profile .character-content .builds-list .dialog-form,
+.perk-display .dialog-form {
     color: white;
 }
 
@@ -324,4 +376,28 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+#dynamic-cursor {
+    position: fixed;
+    height: fit-content;
+    width: fit-content;
+    /* height: 50px; */
+    /* aspect-ratio: 1 / 1; */
+    background-color: var(--clr-otz);
+    padding: 8px 16px;
+    z-index: 100000;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    font-weight: bold;
+    border-radius: 8px;
+    color: white;
+}
+.shown {
+    opacity: 1 !important;
+}
+
+.perk-icon {
+    cursor: pointer;
 }

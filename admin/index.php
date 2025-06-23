@@ -125,9 +125,11 @@
             <div class="label">
                 <p>Description:</p>
                 <div class="drop-panel">
-            
+
                 </div>
             </div>
+            <input type="hidden" name="perk-desc" id="perk-desc">
+            <button type="submit" name="s2" class="change-perk-btn">Submit changes</button>
         </div>
         <div class="details-preview">
             <h3>This perk is obtained from -----</h3>
@@ -152,5 +154,6 @@
     <script src="js/drop_menu.js"></script>
     <script src="js/preview_perk_details.js"></script>
     <script src="js/text_format.js"></script>
+    <script src="js/desc_serializer.js"></script>
 </body>
 </html>

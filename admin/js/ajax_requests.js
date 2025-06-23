@@ -20,11 +20,20 @@ const selectBuilds = document.querySelector('#build-remover #builds-select');
 const tBody = document.querySelector('#build-table-holder table tbody');
 selectBuilds.addEventListener('change', () => requestXMLHttp(selectBuilds, tBody, 'return_builds.php'));
 
-// const selectPerk = document.querySelector('#perk-details');
-// const inputName = document.querySelector('#perk-name');
-// const inputObtainment = document.querySelector('#perk-obtainment');
-// selectPerk.addEventListener('change', () => {
-//     const name1 = inputName.getAttribute('name');
-//     const name2 = inputObtainment.getAttribute('name');
+const selectPerk = document.querySelector('#perk-details');
+const inputName = document.querySelector('#perk-name');
+const inputObtainment = document.querySelector('#perk-obtainment');
+selectPerk.addEventListener('change', () => {
+    const XMLreq = new XMLHttpRequest();
+    XMLreq.open('POST', `./AJAX/return_perk_info.php`, true);
+    XMLreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    XMLreq.onload = () => {
+        const data = JSON.parse(XMLreq.responseText);
+        inputName.value = data.name;
+        inputObtainment.value = data.obtainment;
 
-// });
+        inputName.dispatchEvent(new Event('input'));
+        inputObtainment.dispatchEvent(new Event('input'));
+    };
+    XMLreq.send(`${selectPerk.name}=${encodeURIComponent(selectPerk.value)}`);
+});

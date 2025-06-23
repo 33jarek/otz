@@ -11,6 +11,14 @@
         $result = mysqli_query($conn, $sql);
         return generateOptions($result, $datalist);
     }
+    function test($id) {
+        global $conn;
+
+        $sql = "SELECT id, name, obtainment, description FROM perks WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+
+        return json_encode(mysqli_fetch_assoc($result));
+    }
     function m_returnPerksList($datalist) {
         global $conn;
 
@@ -95,6 +103,20 @@
         header('Location: ?');
         exit;
     }
+    function m_updatePerkDetails() {
+        global $conn;
+
+        $name = mysqli_real_escape_string($conn, $_POST['perk-name']);
+        $obtainment = mysqli_real_escape_string($conn, $_POST['perk-obtainment']);
+        $description = mysqli_real_escape_string($conn, $_POST['perk-desc']);
+        $id = $_POST['perk-details'];
+        
+        $sql = "UPDATE perks SET name = '{$name}', obtainment = '{$obtainment}', description = '{$description}' WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+        
+        header('Location: ?');
+        exit;
+    }
 
     // VIEW
     function generateOptions($result, $datalist) {
@@ -140,5 +162,8 @@
     }
     if(isset($_GET['del'])) {
         m_deleteBuild();
+    }
+    if(isset($_POST['s2'])) {
+        m_updatePerkDetails();
     }
 ?>

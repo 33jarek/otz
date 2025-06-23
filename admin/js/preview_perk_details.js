@@ -15,4 +15,5 @@ inputFields.forEach((field, i) => {
         if(i === 0) obtainmentText.textContent = 'This perk is obtained from '+field.value;
         if(i === 1) perkNameText.textContent = field.value;
     });
+    field.dispatchEvent(new Event('input'));
 });

@@ -357,3 +357,13 @@ td {
 .details-preview .perk-details p {
     margin-top: 4px;
 }
+
+.change-perk-btn {
+    background-color: var(--clr-otz);
+    font-weight: bold;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    height: 28px;
+    cursor: pointer;
+}

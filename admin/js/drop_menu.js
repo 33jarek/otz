@@ -78,7 +78,7 @@ function createElementContent(type, previewTarget = perkDetails) {
         const ulPreview = document.createElement('ul');
         previewTarget.appendChild(ulPreview);
 
-        let count = 0, limit = 4;
+        let count = 0, limit = 10;
         const counter = document.createElement('span');
         counter.classList.add('list-counter');
         counter.textContent = '0';

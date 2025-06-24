@@ -41,7 +41,7 @@ input[type="text"], select {
 select {
     cursor: pointer;
 }
-a {
+a, .mention {
     text-decoration: none;
     color: var(--clr-otz);
 }
@@ -72,6 +72,9 @@ a:hover {
 .quote {
     color: hsl(41, 64%, 74%) !important;
     font-style: italic !important;
+}
+.token{
+    color: hsl(173, 63%, 47%) !important;
 }
 
 #nav-bar {

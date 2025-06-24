@@ -27,6 +27,8 @@
                 <div class="format-element t2">Tier 2</div>
                 <div class="format-element t3">Tier 3</div>
                 <div class="format-element object">Object</div>
+                <div class="format-element mention">Mention</div>
+                <div class="format-element token">Token</div>
             </div>
         </div>
         <ul>

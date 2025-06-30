@@ -22,7 +22,6 @@
             </div>
             <div class="format-options">
                 <p>Text formatting:</p>
-                <div class="format-element link">Link</div>
                 <div class="format-element t1">Tier 1</div>
                 <div class="format-element t2">Tier 2</div>
                 <div class="format-element t3">Tier 3</div>

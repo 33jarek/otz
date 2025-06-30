@@ -43,7 +43,7 @@
             </div>
             <p><span>Last update:</span> January 22, 2025</p>
         </div>
-        <button type="button" id="powrot">POWRÓT JAK COŚ</button>
+        <button type="button" id="powrot">Go back</button>
         <div class="category-section" id="killers-category">
             <?php c_displayCharacters('killer'); ?>
         </div>
@@ -55,7 +55,6 @@
         <form method="dialog" class="dialog-form">
             <button class="close-dialog-btn"><i class="ri-close-large-fill"></i></button>
             <div class="form-content">
-                
             </div>
         </form>
     </dialog>

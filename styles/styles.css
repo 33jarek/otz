@@ -38,7 +38,7 @@ button, input {
 .t3 {
     color: #ac3ee3;
 }
-.link {
+.link, .mention {
     color: var(--clr-otz);
 }
 .object {
@@ -51,6 +51,9 @@ button, input {
 .quote {
     color: hsl(41, 64%, 74%);
     font-style: italic;
+}
+.token {
+    color: hsl(173, 63%, 47%);
 }
 
 #otz {
@@ -352,6 +355,13 @@ body {
     top: 0;
     z-index: 100;
     padding: 8px;
+    background-color: var(--clr-otz);
+    border: none;
+    border-radius: 8px;
+    color:white;
+    padding: 8px 16px;
+    margin-top:16px;
+    margin-right: 16px;
 }
 .role-fog {
     position: absolute;
@@ -401,3 +411,16 @@ body {
 .perk-icon {
     cursor: pointer;
 }
+
+@media screen and (max-width: 1280px) {
+    .category-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 1921px){
+    .category-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+

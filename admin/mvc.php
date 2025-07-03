@@ -11,7 +11,7 @@
         $result = mysqli_query($conn, $sql);
         return generateOptions($result, $datalist);
     }
-    function test($id) {
+    function m_returnPerkDetails($id) {
         global $conn;
 
         $sql = "SELECT id, name, obtainment, description FROM perks WHERE id = $id";
@@ -154,6 +154,9 @@
         $data = m_returnPerksList($datalist);
         echo $data['options'];
         return $data['defaultPerk'];
+    }
+    function c_returnPerkDetails($id) {
+        echo m_returnPerkDetails($id);
     }
 
     // CHECKS

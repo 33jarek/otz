@@ -1,12 +1,13 @@
 <?php include 'mvc.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="content/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="icons/remixicon.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/icons/remixicon.css">
     <title>Otzdarva Builds for DBD</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
         <div id="heading-section">
             <h1><span id="otz">Otzdarva</span> Builds for</h1>
             <div id="logo">
-                <img src="content/imgs/dbd-logo.webp" alt="dbd">
+                <img src="assets/images/dbd-logo.webp" alt="dbd">
             </div>
             <p><span>Last update:</span> January 22, 2025</p>
         </div>
@@ -22,13 +23,13 @@
             <ul id="categories-list">
                 <li class="category-select is-killer">
                     <div id="killers-category">
-                        <img src="content/imgs/killer-icon.png" alt="Killers icon">
+                        <img src="assets/images/killer-icon.png" alt="Killers icon">
                         <h2>KILLERS</h2>
                     </div>
                 </li>
                 <li class="category-select is-survivor">
                     <div id="survivors-category">
-                        <img src="content/imgs/survivor-icon.png" alt="Survivor icon">
+                        <img src="assets/images/survivor-icon.png" alt="Survivor icon">
                         <h2>SURVIVORS</h2>
                     </div>
                 </li>
@@ -39,7 +40,7 @@
         <div id="heading-section">
             <h1><span id="otz">Otzdarva</span> Builds for</h1>
             <div id="logo">
-                <img src="content/imgs/dbd-logo.webp" alt="dbd">
+                <img src="assets/images/dbd-logo.webp" alt="dbd">
             </div>
             <p><span>Last update:</span> January 22, 2025</p>
         </div>
@@ -61,14 +62,14 @@
     <footer>
         
     </footer>
-    <script src="js/gsap/gsap.min.js"></script>
-    <script src="js/gsap/Observer.min.js"></script>
+    <script src="/dbd/assets/animations/gsap/gsap.min.js"></script>
+    <script src="/dbd/assets/animations/gsap/Observer.min.js"></script>
 
-    <script src="js/choose_category.js"></script>
-    <script src="js/show_perk_lists.js"></script>
-    <script src="js/back_to_menu.js"></script>
-    <script src="js/show_perk_name.js"></script>
-    <script src="js/ajax_requests.js"></script>
+    <script src="/dbd/assets/modules/main_page/choose_category.js"></script>
+    <script src="/dbd/assets/modules/main_page/show_perk_lists.js"></script>
+    <script src="/dbd/assets/modules/main_page/back_to_menu.js"></script>
+    <script src="/dbd/assets/modules/main_page/show_perk_name.js"></script>
+    <script src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
 
     <!-- UNCOMMENT TO TUNR OFF CATEGORY SELECT -->
     <!-- <script>

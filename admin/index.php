@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../content/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../icons/remixicon.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/icons/remixicon.css">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <title>Admin Panel</title>
 </head>
 <body>
     <nav id="nav-bar">
@@ -22,6 +22,7 @@
             </div>
             <div class="format-options">
                 <p>Text formatting:</p>
+                <div class="format-element link">Link</div>
                 <div class="format-element t1">Tier 1</div>
                 <div class="format-element t2">Tier 2</div>
                 <div class="format-element t3">Tier 3</div>
@@ -141,7 +142,7 @@
                         
                     </div>
                 </div>
-                <div><img src="../content/perk_icons/CorruptIntervention.png" alt="Corrupt Intervention icon"></div>
+                <div><img src="../assets/images/perk_icons/CorruptIntervention.png" alt="Corrupt Intervention icon"></div>
             </div>
         </div>
     </form>
@@ -150,11 +151,11 @@
         <?php c_returnPerksList(true); ?>
     </datalist>
 
-    <script src="js/ajax_requests.js"></script>
-    <script src="js/show_tabs.js"></script>
-    <script src="js/drop_menu.js"></script>
-    <script src="js/preview_perk_details.js"></script>
-    <script src="js/text_format.js"></script>
-    <script src="js/desc_serializer.js"></script>
+    <script src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
+    <script src="/dbd/assets/modules/admin_panel/show_tabs.js"></script>
+    <script src="/dbd/assets/modules/admin_panel/drop_menu.js"></script>
+    <script src="/dbd/assets/modules/admin_panel/preview_perk_details.js"></script>
+    <script src="/dbd/assets/modules/admin_panel/text_format.js"></script>
+    <script src="/dbd/assets/modules/admin_panel/desc_serializer.js"></script>
 </body>
 </html>

@@ -1,0 +1,426 @@
+/* Variables */
+:root {
+    --clr-otz: hsl(347, 66%, 49%);
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Lexend';
+    src: url(../fonts/Lexend.ttf);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+ul {
+    list-style: none;
+}
+button, input {
+    font-family: inherit;
+}
+
+/* Utility */
+.t1 {
+    color: #199b1e;
+}
+.t2 {
+    color: #2f9cd6;
+}
+.t3 {
+    color: #ac3ee3;
+}
+.link, .mention {
+    color: var(--clr-otz);
+}
+.object {
+    color: hsl(45, 77%, 62%);
+}
+.note {
+    color: hsl(0, 0%, 60%);
+    font-style: italic;
+}
+.quote {
+    color: hsl(41, 64%, 74%);
+    font-style: italic;
+}
+.token {
+    color: hsl(173, 63%, 47%);
+}
+
+#otz {
+    color:var(--clr-otz);
+    position: relative;
+}
+#otz::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url(../images/favicon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    translate: 0 -50%;
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+    height: 100dvh;
+}
+
+#hdr {
+    position: fixed;
+    height: 100dvh;
+    width: 100%;
+    align-content: center;
+    background-color: #161719;
+    z-index: 10000;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* DO ANIMACJI */
+    color: white;
+}
+#heading-section {
+    text-align: center;
+    color:white;
+    padding-block: 64px;
+}
+#logo img {
+    display: inline-block;
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: center;
+}
+#nav-bar #categories-list {
+    display: flex;
+    gap: 32px;
+}
+#nav-bar .category-select {
+    text-align: center;
+    color: white;
+    padding: 32px;
+    border: 1px solid white;
+    border-radius: 32px;
+    cursor: pointer;
+}
+#nav-bar .category-select img {
+    height: 150px;
+    margin-bottom: 8px;
+}
+
+/* Main content for the site */
+#main-content {
+    background-color: #161719;
+}
+.category-section {
+    color: white;
+    padding: 64px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.category-select:hover.is-killer {
+    filter: sepia(1) saturate(30) hue-rotate(289.1deg) saturate(7) brightness(0.47);
+}
+.category-select:hover.is-survivor {
+    filter: sepia(1) saturate(30) hue-rotate(177.3deg) saturate(3.1) brightness(0.40);
+}
+
+.character-profile {
+    padding: 16px;
+    position: relative;
+    display: flex;
+}
+
+.character-profile .character-image {
+    position: relative;
+    z-index: 1;
+}
+
+.character-profile .character-image .character-name {
+    font-size: 2rem;
+    text-align: center;
+    mask-image: url(../images/CharPortrait_roleBG.webp);
+    mask-size: 90%;
+    filter: drop-shadow(0 0 5px black);
+    mask-position: 30%;
+    margin-bottom: 8px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    translate: -50% 0;
+    width: 100%;
+}
+
+.character-profile .character-content {
+    position: relative;
+    align-content: center;
+    z-index: 0;
+}
+.character-profile .character-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    translate: 0 -50%;
+    width: 150%;
+    height: 80%;
+    background-color: hsl(240, 6%, 15%);
+    z-index: -1;
+    border-radius: 8px;
+}
+
+.character-profile .character-content .build.main-build {
+    position: relative;
+    z-index: 0;
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build.main-build .additional-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.character-profile .character-content .build.main-build .additional-info .about-build .main-build-info,
+.character-profile .character-content .build .additional-info .about-build .build-info {
+    list-style: disc;
+    padding-left: 32px;
+    font-size: .8rem;
+    color: hsl(0, 0%, 80%);
+}
+
+.character-profile .character-content .build.main-build .additional-info .more-builds .btn-show-list {
+    background-color: var(--clr-otz);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.character-profile .character-content .build.main-build .additional-info .more-builds .builds-count {
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build.main-build .build-name {
+    font-size: 2rem;
+}
+
+.character-profile .character-content .build .perks-list {
+    position: relative;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.character-profile .character-content .build .perks-list li {
+    /* background-image: url(../images/perk-background-dark.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 4px;
+    max-width: 150px;
+    position: relative;
+}
+.character-profile .character-content .build .perks-list li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+    width: 1px;
+    height: 80%;
+    background-image: linear-gradient(to top, transparent, hsl(0, 0%, 50%), transparent);
+}
+.character-profile .character-content .build .perks-list li:last-child::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    translate: 0 -50%;
+    width: 1px;
+    height: 80%;
+    background-image: linear-gradient(to top, transparent, hsl(0, 0%, 50%), transparent);
+}
+
+.character-profile .character-content .builds-list,
+.perk-display {
+    /* left: 50%;
+    top: 50%; */
+    /* translate: -50% -50%; */
+    inset: 0;
+    background-color: hsl(240, 6%, 15%);
+    border: none;
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    max-width: 1000px;
+}
+.perk-display {
+    max-width: 1250px;
+}
+.character-profile .character-content .builds-list .dialog-form .dialog-form-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 64px;
+    padding: 32px;
+}
+.perk-display .dialog-form {
+    padding: 32px;
+}
+.perk-display .dialog-form h3 {
+    color: hsl(0, 0%, 60%);
+    margin-bottom: 12px;
+}
+.perk-display .dialog-form h2 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.perk-display .dialog-form .perk-details {
+    display: flex;
+}
+.perk-display .dialog-form .perk-details ul {
+    padding-left: 32px;
+    margin-block: 4px;
+}
+.perk-display .dialog-form .perk-details ul li::marker {
+    content: '- ';
+}
+.perk-display .dialog-form .perk-details p {
+    margin-top: 4px;
+}
+/* .perk-display .dialog-form .details-holder > div{
+    align-items: center;
+} */
+.character-profile .character-content .builds-list::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.character-profile .character-content .builds-list .close-dialog-btn,
+.perk-display .close-dialog-btn {
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    color: white;
+    background-color: var(--clr-otz);
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 25% -25%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.character-profile .character-content .builds-list .close-dialog-btn i,
+.perk-display .close-dialog-btn i {
+    pointer-events: none;
+}
+
+.character-profile .character-content .builds-list .dialog-form,
+.perk-display .dialog-form {
+    color: white;
+}
+
+.character-profile .character-content .builds-list .btn-show-list {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background-color: var(--clr-otz);
+    border: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    color: white;
+    padding: 4px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#powrot {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    padding: 8px;
+    background-color: var(--clr-otz);
+    border: none;
+    border-radius: 8px;
+    color:white;
+    padding: 8px 16px;
+    margin-top:16px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.role-fog {
+    position: absolute;
+    background-image: url(../images/CharPortrait_roleBG.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.role-fog.is-killer {
+    filter: sepia(1) saturate(30) hue-rotate(289.1deg) saturate(7) brightness(0.47);
+}
+.role-fog.is-survivor {
+    filter: sepia(1) saturate(30) hue-rotate(177.3deg) saturate(3.1) brightness(0.40);
+}
+.character-background {
+    position: absolute;
+    background-image: url(../images/CharPortrait_bg.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#dynamic-cursor {
+    position: fixed;
+    height: fit-content;
+    width: fit-content;
+    /* height: 50px; */
+    /* aspect-ratio: 1 / 1; */
+    background-color: var(--clr-otz);
+    padding: 8px 16px;
+    z-index: 100000;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    font-weight: bold;
+    border-radius: 8px;
+    color: white;
+}
+.shown {
+    opacity: 1 !important;
+}
+
+.perk-icon {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+    .category-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 1921px){
+    .category-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

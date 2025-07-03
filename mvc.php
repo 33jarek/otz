@@ -97,14 +97,14 @@
                 $info .= '</div>';
             $info .= '</div>';
             $imgName = formatPerkName($row['name'], ["'", ":"]);
-            $info .= "<div><img src=\"content/perk_icons/{$imgName}.png\" alt=\"{$row['name']} icon\"></div>";
+            $info .= "<div><img src=\"assets/images/perk_icons/{$imgName}.png\" alt=\"{$row['name']} icon\"></div>";
         $info .= '</div>';
 
         return $info;
     }
     function renderPerkImageListItem($perkName) {
         $convertedName = formatPerkName($perkName, ["'", ":"]);
-        $perkListItems = '<li><img class="perk-icon" src="content/perk_icons/'.$convertedName.'.png" alt="'.$perkName.' icon"></li>';
+        $perkListItems = '<li><img class="perk-icon" src="assets/images/perk_icons/'.$convertedName.'.png" alt="'.$perkName.' icon"></li>';
         return $perkListItems;
     }
     function createCharacterPanels($contents) {
@@ -115,7 +115,7 @@
                 $structure .= '<div class="character-image">';
                     $structure .= '<div class="character-background"></div>';
                     $structure .= '<div class="role-fog is-'.$details['type'].'"></div>';
-                    $structure .= '<img src="content/'.$details['type'].'_portraits/'.$details['image'].'" alt="'.$killer.' image">';
+                    $structure .= '<img src="assets/images/'.$details['type'].'_portraits/'.$details['image'].'" alt="'.$killer.' image">';
                     $structure .= '<h2 class="character-name">'.$killer.'</h2>';
                 $structure .= '</div>';
 

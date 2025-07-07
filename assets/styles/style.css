@@ -80,6 +80,7 @@ a:hover {
 #nav-bar {
     position: fixed;
     left: 32px;
+    /* bottom: 16px; */
     z-index: 10;
 }
 #nav-bar ul {
@@ -354,7 +355,7 @@ td {
     padding-left: 32px;
     margin-block: 4px;
 }
-.details-preview .perk-details ul li::marker {
+.details-preview .perk-details ul li:not(:has(ul))::marker {
     content: '- ';
 }
 .details-preview .perk-details p {

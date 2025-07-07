@@ -127,7 +127,7 @@
             <div class="label">
                 <p>Description:</p>
                 <div class="drop-panel">
-
+                    
                 </div>
             </div>
             <input type="hidden" name="perk-desc" id="perk-desc">
@@ -139,7 +139,7 @@
                 <div class="about-perk">
                     <h2>-----</h2>
                     <div class="details-holder">
-                        
+                        <?php echo $perk['description']; ?>
                     </div>
                 </div>
                 <div><img src="../assets/images/perk_icons/CorruptIntervention.png" alt="Corrupt Intervention icon"></div>
@@ -151,7 +151,7 @@
         <?php c_returnPerksList(true); ?>
     </datalist>
 
-    <script src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
+    <script type="module" src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
     <script src="/dbd/assets/modules/admin_panel/show_tabs.js"></script>
     <script src="/dbd/assets/modules/admin_panel/drop_menu.js"></script>
     <script src="/dbd/assets/modules/admin_panel/preview_perk_details.js"></script>

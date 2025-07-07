@@ -25,7 +25,7 @@
         $sql = "SELECT id, name, obtainment, description FROM perks";
         $result = mysqli_query($conn, $sql);
 
-        $firstRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name, obtainment FROM perks LIMIT 1"));
+        $firstRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name, obtainment, description FROM perks LIMIT 1"));
         $optionsHtml = generateOptions($result, $datalist);
 
         return [
@@ -144,8 +144,8 @@
     }
 
     // CONTROLLER
-    function c_returnSelectStruct($type, $datanase = false) {
-        echo m_returnSelectStruct($type, $datanase);
+    function c_returnSelectStruct($type, $database = false) {
+        echo m_returnSelectStruct($type, $database);
     }
     function c_returnTableStruct($type) {
         echo m_returnTableStruct($type);

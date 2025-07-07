@@ -153,9 +153,6 @@
 
     <script type="module" src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
     <script src="/dbd/assets/modules/admin_panel/show_tabs.js"></script>
-    <script src="/dbd/assets/modules/admin_panel/drop_menu.js"></script>
-    <script src="/dbd/assets/modules/admin_panel/preview_perk_details.js"></script>
     <script src="/dbd/assets/modules/admin_panel/text_format.js"></script>
-    <script src="/dbd/assets/modules/admin_panel/desc_serializer.js"></script>
 </body>
 </html>

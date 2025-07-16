@@ -3,7 +3,7 @@ import { DescriptionManager } from '../admin_panel/DescriptionManager.js';
 const descriptionManager = new DescriptionManager();
 
 // Main ajax request sending function
-function ajaxRequest(sourceOrName, target, file, callback = null) {
+export function ajaxRequest(sourceOrName, target, file, callback = null) {
     let dataString;
     
     if (typeof sourceOrName === 'object' && sourceOrName !== null && 'value' in sourceOrName && 'getAttribute' in sourceOrName) {
@@ -41,9 +41,9 @@ const perkNameInput         = document.querySelector('#perk-name');
 const perkObtainmentInput   = document.querySelector('#perk-obtainment');
 
 const perkDetailsPreview    = document.querySelector('.details-preview');
-const perkObtainmentPreview = perkDetailsPreview.querySelector('h3');
-const perkNamePreview       = perkDetailsPreview.querySelector('.about-perk h2');
-const perkImagePreview      = perkDetailsPreview.querySelector('.perk-details img');
+const perkObtainmentPreview = perkDetailsPreview?.querySelector('h3');
+const perkNamePreview       = perkDetailsPreview?.querySelector('.about-perk h2');
+const perkImagePreview      = perkDetailsPreview?.querySelector('.perk-details img');
 
 function loadPerkDetails() {
     if (!perkSelect.value) return clearPerkDetails();

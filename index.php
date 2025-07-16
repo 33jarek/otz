@@ -65,11 +65,11 @@
     <script src="/dbd/assets/animations/gsap/gsap.min.js"></script>
     <script src="/dbd/assets/animations/gsap/Observer.min.js"></script>
 
+    <script type="module" src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
     <script src="/dbd/assets/modules/main_page/choose_category.js"></script>
-    <script src="/dbd/assets/modules/main_page/show_perk_lists.js"></script>
+    <script type="module" src="/dbd/assets/modules/main_page/show_perk_lists.js"></script>
     <script src="/dbd/assets/modules/main_page/back_to_menu.js"></script>
     <script src="/dbd/assets/modules/main_page/show_perk_name.js"></script>
-    <script src="/dbd/assets/modules/XMLHttpRequest/ajax_requests.js"></script>
 
     <!-- UNCOMMENT TO TUNR OFF CATEGORY SELECT -->
     <!-- <script>
